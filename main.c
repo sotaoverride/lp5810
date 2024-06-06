@@ -13,7 +13,6 @@
 //                |                 |
 //                |             PA11|-> EN (if necessary)
 
-#include "ti_msp_dl_config.h"
 #include <I2C_EN.h>
 #include <LP5813.h>
 #include <stdio.h>
@@ -196,7 +195,7 @@ void RGB_Auto()
 int main(void)
 {
     delay_ms(200);
-    SYSCFG_DL_init();
+    //SYSCFG_DL_init();
     delay_ms(10);
 
     //ENABLE BOOST

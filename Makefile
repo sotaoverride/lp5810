@@ -1,6 +1,6 @@
-main: -I. i2c.c  I2C_EN.c  I2C_EN.h  i2c.h  LED_Animation_Auto.c  LED_Animation_Auto.h  LED_Animation_Manual.c  LED_Animation_Manual.h  LP5813.c  LP5813.h  main.c
+main: -I. i2c.c  I2C_EN.c LED_Animation_Auto.c LED_Animation_Manual.c LP5813.c main.c
 
-        ${CXX} i2c.c  I2C_EN.c  I2C_EN.h  i2c.h  LED_Animation_Auto.c  LED_Animation_Auto.h  LED_Animation_Manual.c  LED_Animation_Manual.h  LP5813.c  LP5813.h  main.c -o main
+        ${CXX} LED_Animation_Auto.c LED_Animation_Manual.c LP5813.c main.c -o main
 
 clean:
 
