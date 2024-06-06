@@ -8,7 +8,6 @@
 #include <I2C_EN.h>
 #include <stdio.h>
 #include <stdint.h>
-#include "ti_msp_dl_config.h"
 #include "i2c.h"
 
 /* Timer configuration */
