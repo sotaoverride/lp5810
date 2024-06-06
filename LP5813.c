@@ -187,12 +187,12 @@ void Chip_Normal()
 
 void BOOST_Disable_EN()
 {
-    DL_GPIO_clearPins(GPIOA, BOOST_BOOST_ENBALE_PIN);
+    //DL_GPIO_clearPins(GPIOA, BOOST_BOOST_ENBALE_PIN);
 }
 
 void BOOST_Enable_EN()
 {
-    DL_GPIO_setPins(GPIOA, BOOST_BOOST_ENBALE_PIN);
+    //DL_GPIO_setPins(GPIOA, BOOST_BOOST_ENBALE_PIN);
 }
 
 /* Set up device configuration 0 */
