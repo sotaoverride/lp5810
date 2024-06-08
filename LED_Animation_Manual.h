@@ -8,11 +8,6 @@
 #ifndef LED_ANIMATION_MANUAL_H_
 #define LED_ANIMATION_MANUAL_H_
 
-#ifdef __cplusplus
-extern "C"
-{
-#endif
-
 //4-scan TCM mode
 extern void RGB_ALL_FULL();
 extern void RGB_ALL_OFF();
@@ -26,16 +21,6 @@ extern void RGB_Rainbow();
 extern void LED_ALL_FULL();
 extern void LED_ALL_OFF();
 extern void LED_Breathing();
-
-#ifdef __cplusplus
-}
-#endif
-
-
-
-
-
-
 
 
 #endif /* LED_ANIMATION_MANUAL_H_ */
