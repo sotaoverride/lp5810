@@ -194,6 +194,7 @@ void RGB_Auto()
 
 int main(void)
 {
+    printf("hello here now \n");
     delay_ms(200);
     //SYSCFG_DL_init();
     delay_ms(10);
