@@ -212,7 +212,7 @@ void I2C_write(uint16_t regAdr_10bit, uint8_t data)
                 printf("failed to start i2c device\r\n");
                 //return rc;
         }
-        rc = i2c_write_reg(&dev, reg_Adr_8bit, data);
+        rc = i2c_write_reg(&dev, regAdr_8bit, data);
         if (rc <= 0) {
                 printf("failed to write to i2c device\r\n");
                 //return rc;
