@@ -12,8 +12,8 @@
 
 /* Timer configuration */
 //#define CPU_F ((double)48000000)
-//#define delay_us(x) delay_cycles((long)(CPU_F*(double)x/1000000.0))
-//#define delay_ms(x) delay_cycles((long)(CPU_F*(double)x/1000.0))
+//#define delay_us(x) sleep((long)(CPU_F*(double)x/1000000.0))
+//#define delay_ms(x) sleep((long)(CPU_F*(double)x/1000.0))
 
 /***************************************************************************//**
  *Slave Address

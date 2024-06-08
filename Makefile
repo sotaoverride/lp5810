@@ -1,8 +1,6 @@
 main: i2c.c  I2C_EN.c LED_Animation_Auto.c LED_Animation_Manual.c LP5813.c main.c
-
-        ${CC} -I. LED_Animation_Auto.c LED_Animation_Manual.c LP5813.c main.c -o main
+	${CXX} -I. LED_Animation_Auto.c LED_Animation_Manual.c LP5813.c main.c -o main
 
 clean:
-
-        rm -f main
-        rm -f *.o
+	rm -f main
+	rm -f *.o

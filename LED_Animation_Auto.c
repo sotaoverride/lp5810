@@ -12,7 +12,6 @@
 /* Standard Includes */
 #include <stdint.h>
 #include <stdbool.h>
-#include "ti_msp_dl_config.h"
 
 #define LED0                               0x00
 #define LED1                               0x01

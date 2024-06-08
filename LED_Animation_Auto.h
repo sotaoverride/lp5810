@@ -28,6 +28,9 @@ extern void LED_Blink();
 extern void LED_Fade_IN_And_OUT();
 extern void LED_Horse_Race();
 
+#ifdef __cplusplus
+}
+#endif
 
 
 

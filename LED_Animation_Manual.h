@@ -27,6 +27,9 @@ extern void LED_ALL_FULL();
 extern void LED_ALL_OFF();
 extern void LED_Breathing();
 
+#ifdef __cplusplus
+}
+#endif
 
 
 
