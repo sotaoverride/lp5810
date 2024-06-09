@@ -15,6 +15,9 @@ ti() {
 		else
 					log i2cset cmd from $file to dev $DEV register $REG failed
 		fi
+	else
+		VAL=$(i2cget -y $BUS $DEV $REG c 2>&1)
+		log $VAL from config reg
         fi
 }
 
