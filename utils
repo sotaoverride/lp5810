@@ -1,0 +1,11 @@
+#!/bin/bash
+#Utils
+fatal() {
+        echo "$@"
+        exit 1
+}
+log() {
+        STAMP=$(date +%F-%T)
+        echo "$STAMP $@"
+        echo "$STAMP $@" >> logfile
+}
