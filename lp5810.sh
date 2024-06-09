@@ -11,11 +11,9 @@ ti() {
 	       	RC=$?
 		if test $RC = 0; then
 
-					log i2cget cmd from $f to dev $DEV register $REG passed
-					pflag=true
+					log i2cset cmd from $file to dev $DEV register $REG passed
 		else
-					log i2cget cmd from $f to dev $DEV register $REG failed
-					pflag=false
+					log i2cset cmd from $file to dev $DEV register $REG failed
 		fi
         fi
 }
