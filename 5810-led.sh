@@ -31,7 +31,7 @@ test_all() {
 }
 show_help() {
 	echo "USAGE: $0 [-r<intensity for red led> -g<intensity for green led> -b<intensity for blue led>] \n
-Intencity units here are decipercent, so intensity of 1 would be 0.1% percent, intensity of  1000 would be 100.0%"
+Intensity units here are decipercent, so intensity of 1 would be 0.1% percent, intensity of  1000 would be 100.0%"
 }
 
 red_intensity=0x5c
