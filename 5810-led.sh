@@ -13,7 +13,8 @@ RED_PWM_REG=
 GREEN_PWM_REG=
 BLUW_PWM_REG=
 percentageToHEX() {
-	printf '0x%x' ($1*100)/39
+	#each hex step is 0.39 percent
+	printf '0x%x' $((($1*100000)/0392156))
 }
 enable() {
 	i2cset -y $BUS $ADDR 0x00 0x01
@@ -29,7 +30,8 @@ test_all() {
 	ts $1 $2 $2;
 }
 show_help() {
-	echo "USAGE: $0 [-r<intensity for red led> -g<intensity for green led> -b<intensity for blue led>]"
+	echo "USAGE: $0 [-r<intensity for red led> -g<intensity for green led> -b<intensity for blue led>] \n
+Intencity units here are decipercent, so intensity of 1 would be 0.1% percent, intensity of  1000 would be 100.0%"
 }
 
 red_intensity=0x5c
