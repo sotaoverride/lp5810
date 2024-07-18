@@ -11,13 +11,17 @@ BLUE_MAN_CUR_REG=0x32
 #MANUAL PWM REGISTERS WILL SETUP LATER..
 RED_PWM_REG=0x40
 GREEN_PWM_REG=0x41
-BLUW_PWM_REG=0x42
+BLUE_PWM_REG=0x42
 percentageToHEX() {
 	#each hex step is 0.39 percent
-	printf '0x%x' $((($1*100000)/0392156))
+	printf '0x%x' $((($1*100000)/392156))
 }
 enable() {
 	i2cset -y $BUS $ADDR 0x00 0x01
+	i2cset -y $BUS $ADDR 0x10 0x55
+}
+stick() {
+	i2cset -y $BUS $ADDR 0x20 0x0f
 }
 ts() {
 	enable
@@ -27,6 +31,7 @@ ts() {
 	i2cset -y $BUS $ADDR $RED_MAN_CUR_REG "$(percentageToHEX $1)"
 	i2cset -y $BUS $ADDR $GREEN_MAN_CUR_REG "$(percentageToHEX $2)"
 	i2cset -y $BUS $ADDR $BLUE_MAN_CUR_REG "$(percentageToHEX $3)"
+	stick
 }
 
 test_all() {
