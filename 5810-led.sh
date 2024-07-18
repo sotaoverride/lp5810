@@ -9,9 +9,9 @@ GREEN_MAN_CUR_REG=0x31
 BLUE_MAN_CUR_REG=0x32
 #MANUAL PWM REGISTERS FOR RGB
 #MANUAL PWM REGISTERS WILL SETUP LATER..
-RED_PWM_REG=
-GREEN_PWM_REG=
-BLUW_PWM_REG=
+RED_PWM_REG=0x40
+GREEN_PWM_REG=0x41
+BLUW_PWM_REG=0x42
 percentageToHEX() {
 	#each hex step is 0.39 percent
 	printf '0x%x' $((($1*100000)/0392156))
@@ -21,6 +21,9 @@ enable() {
 }
 ts() {
 	enable
+	i2cset -y $BUS $ADDR $RED_PWM_REG "$(percentageToHEX $1)"
+	i2cset -y $BUS $ADDR $GREEN_PWM_REG "$(percentageToHEX $2)"
+	i2cset -y $BUS $ADDR $BLUE_PWM_REG "$(percentageToHEX $3)"
 	i2cset -y $BUS $ADDR $RED_MAN_CUR_REG "$(percentageToHEX $1)"
 	i2cset -y $BUS $ADDR $GREEN_MAN_CUR_REG "$(percentageToHEX $2)"
 	i2cset -y $BUS $ADDR $BLUE_MAN_CUR_REG "$(percentageToHEX $3)"
