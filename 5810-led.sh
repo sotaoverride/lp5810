@@ -1,6 +1,7 @@
 #!/bin/sh
 #LED Test
 source ./utils
+set -x
 BUS=3
 ADDR=0x50
 #MANUAL DC REGISTERS FOR RGB
@@ -14,7 +15,16 @@ GREEN_PWM_REG=0x41
 BLUE_PWM_REG=0x42
 percentageToHEX() {
 	#each hex step is 0.39 percent
-	printf '0x%x' $((($1*100000)/392156))
+	printf '0x%x' $1
+}
+reset() {
+	i2cset -y $BUS $ADDR $RED_MAN_CUR_REG 0
+	i2cset -y $BUS $ADDR $GREEN_MAN_CUR_REG 0
+	i2cset -y $BUS $ADDR $BLUE_MAN_CUR_REG 0
+	i2cset -y $BUS $ADDR $RED_PWM_REG 0
+	i2cset -y $BUS $ADDR $GREEN_PWM_REG 0
+	i2cset -y $BUS $ADDR $BLUE_PWM_REG 0
+
 }
 enable() {
 	i2cset -y $BUS $ADDR 0x00 0x01
@@ -25,21 +35,23 @@ stick() {
 }
 ts() {
 	enable
-	i2cset -y $BUS $ADDR $RED_PWM_REG "$(percentageToHEX $1)"
-	i2cset -y $BUS $ADDR $GREEN_PWM_REG "$(percentageToHEX $2)"
-	i2cset -y $BUS $ADDR $BLUE_PWM_REG "$(percentageToHEX $3)"
+	reset
+	stick
+	enable
 	i2cset -y $BUS $ADDR $RED_MAN_CUR_REG "$(percentageToHEX $1)"
 	i2cset -y $BUS $ADDR $GREEN_MAN_CUR_REG "$(percentageToHEX $2)"
 	i2cset -y $BUS $ADDR $BLUE_MAN_CUR_REG "$(percentageToHEX $3)"
-	stick
+	i2cset -y $BUS $ADDR $RED_PWM_REG "$(percentageToHEX $1)"
+	i2cset -y $BUS $ADDR $GREEN_PWM_REG "$(percentageToHEX $2)"
+	i2cset -y $BUS $ADDR $BLUE_PWM_REG "$(percentageToHEX $3)"
 }
 
 test_all() {
-	ts $1 $2 $2;
+	ts $1 $2 $3
 }
 show_help() {
 	echo "USAGE: $0 [-r<intensity for red led> -g<intensity for green led> -b<intensity for blue led>] \n
-Intensity units here are decipercent, so intensity of 1 would be 0.1% percent, intensity of  1000 would be 100.0%"
+	Intensity can take values from 0x00 to 0xff each setp being .39%"
 }
 
 red_intensity=0x5c
@@ -50,7 +62,7 @@ do
 	case "${flag}" in
 		r) red_intensity=${OPTARG};;
 		g) green_intensity=${OPTARG};;
-		b) blue_intenisty=${OPTARG};;
+		b) blue_intensity=${OPTARG};;
 		h|\?) show_help
 		exit 0
 		;;
